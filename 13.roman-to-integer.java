@@ -1,0 +1,29 @@
+/*
+ * @lc app=leetcode id=13 lang=java
+ *
+ * [13] Roman to Integer
+ */
+class Solution {
+    public int romanToInt(String s) {
+        HashMap<String, Integer> map = new HashMap<>();
+
+        map.put("I", 1); map.put("V", 5); map.put("X", 10);
+        map.put("L", 50); map.put("C", 100); map.put("D", 500);
+        map.put("M", 1000);
+
+        int result = 0;
+
+        for (int i = 0; i < s.length()-1; i++) {
+            if (map.get(s.substring(i, i+1)) < map.get(s.substring(i+1, i+2))) {
+                result -= map.get(s.substring(i, i+1));
+            }else {
+                result += map.get(s.substring(i, i+1));
+            }
+        }
+
+        result += map.get(s.substring(s.length()-1));
+
+        return result;  
+    }
+}
+
