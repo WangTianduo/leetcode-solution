@@ -8,14 +8,11 @@ class Solution:
         if len(s) % 2 != 0:
             return False
         
-        left_match = dict()
+        left_match = ['(', '[', '{']
         right_match = dict()
 
-        left_match['('] = ')'
         right_match[')'] = '('
-        left_match['['] = ']'
         right_match[']'] = '['
-        left_match['{'] = '}'
         right_match['}'] = '{'
 
         stack = list()
