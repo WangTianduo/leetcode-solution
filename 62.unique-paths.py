@@ -6,26 +6,23 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         
-        if m == 1 or n == 1:
-            return 1
+        m -= 1
+        n -= 1
+        total = m + n
+            
+        if m > n:
+            small = n
+            large = m
         else:
-            m -= 1
-            n -= 1
-            total = m + n
+            small = m
+            large = n
+        upper = 1
+        down = 1
+        for i in range(small):
+            upper *= total - i
+            down *= small - i
             
-            if m > n:
-                small = n
-                large = m
-            else:
-                small = m
-                large = n
-            upper = 1
-            down = 1
-            for i in range(small):
-                upper *= total - i
-                down *= small - i
-            
-            return upper // down
+        return upper // down
             
         # below is the direct dp algorithm
         # def check_block(map_m, map_n, x, y):
